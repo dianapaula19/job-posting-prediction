@@ -1,13 +1,13 @@
-# job-posting-prediction
+# rain-prediction-australia
 
-Hellllooooooo
+Activating the virtual environment and installing the required libraries:
 
+```(bash)
+virtualenv venv && source venv/bin/activate && pip install -r requirements.txt
+```
 
+Running the program:
 
-
-
-
-
-
-
-<<<<<<<<-------____------------->>>>
+```(bash)
+python main.py
+```
