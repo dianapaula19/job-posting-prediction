@@ -1,7 +1,12 @@
-from data import Data 
+from data import Data
+from analysis import Analysis 
+
 
 def main():
-    data = Data('./data/weatherAUS.csv')
+    d = Data('./data/weatherAUS.csv')
+    a = Analysis(d)
+    
+    d.preprocess()
 
 if __name__ == "__main__":
     main()
