@@ -7,6 +7,7 @@ class Data:
         self.col = {i: column for i, column in enumerate(self.data.columns)}
         self.cat = [7, 9, 10, 17, 18] # categorical columns, except for the Cloud9am and Cloud3pm columns
         self.num = [2, 3, 4, 5, 6, 8, 11, 12, 13, 14, 15, 16, 19, 20] # numerical columns
+        self.map = {'No': 0, 'Yes': 1}
         print(self.col)
 
     def drop_rows(self, column_no):
@@ -41,7 +42,13 @@ class Data:
                 new_rain_col.append(y)
 
         self.data[self.col[21]] = new_rain_col
-        
+    
+    def map_binary(self, column_no):
+        # map No to 0 and Yes to 1
+        new_col = []
+        for x in self.data[self.col[column_no]]:
+            new_col.append(self.map[x])
+        self.data[self.col[column_no]] = new_col
 
     def preprocess(self):
         
@@ -50,6 +57,9 @@ class Data:
         self.update_rain_today() # replace the NA values of the RainToday column with the right value
         self.drop_rows(21) # drop all the rows that have a null value for the RainTomorrow column 
         
+        for col in [21, 22]:
+            self.map_binary(col) 
+
         for col in self.cat:
             self.fill_na_values(col, "cat")
         for col in self.num:
