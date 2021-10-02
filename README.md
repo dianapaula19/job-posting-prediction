@@ -1,1 +1,1 @@
-# rain-prediction-australia-project
+# rain-prediction-australia
